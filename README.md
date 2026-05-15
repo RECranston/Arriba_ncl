@@ -21,7 +21,7 @@ The scripts include:
 ```
 git clone https://github.com/RECranston/Arriba_ncl.git
 ```
-* Make the arriba_prep.sh, arriba_run.sh and install_R_packages.R scripts executable
+* Change into the cloned directory `cd Arriba_ncl`. Make the `arriba_prep.sh`, `arriba_run.sh` and `install_R_packages.R` scripts executable
 ```
 chmod 777 arriba_prep.sh
 chmod 777 arriba_run.sh
