@@ -32,7 +32,7 @@ chmod 777 install_R_packages.R
 sbatch ./arriba_prep.sh
 ```
 * The defined arriba release will now be downloaded and compiled. Defined genome files and annotations will be downloaded and associated STAR indexes will be generated.
-* Ensure trimmed fastq files are available and defined in a tab-separated sample sheet where the first column is the name of the sample to be analysed. Save this file as a `.txt`.
+* Ensure trimmed fastq.gz files are available and defined in a tab-separated sample sheet where the first column is the name of the sample to be analysed. Save this file as a `.txt`.
 The sample sheet can include 2 fastq files per sample name or multiple paired fastqs per sample (or a mix of both) as per the examples below:
 ```
 sample_name  sample1_L001_R1.fastq.gz  sample1_L001_R2.fastq.gz
