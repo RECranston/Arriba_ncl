@@ -2,7 +2,7 @@
 #SBATCH --account=XXXX
 #SBATCH --partition=default_free
 #SBATCH --mem=50G
-#SBATCH --time=2:00:00
+#SBATCH --time=12:00:00
 #SBATCH --cpus-per-task=10
 #SBATCH --job-name=arriba_prep
 #SBATCH --output=slurm_log_%j.out
