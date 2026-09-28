@@ -1,12 +1,12 @@
 #!/bin/bash
-#SBATCH --account=XXXXX
+#SBATCH --account=rockhpc_sccrukomics
 #SBATCH --partition=default_free
 #SBATCH --mem=100G
-#SBATCH --time=6:00:00
+#SBATCH --time=24:00:00
 #SBATCH --cpus-per-task=8
 #SBATCH --job-name=arriba_run
 #SBATCH --output=logs/arriba_%A_%a.out
-#SBATCH --array=1-2%2
+#SBATCH --array=46,62,64,66,67,72,75,77,88,94,107,163,171,173,180,182,192,196,240%20
 
 echo -en "\nA script for running Arriba RNA-Seq fusion detection\n\n"
 echo -en "Ruth Cranston 2026\n"
@@ -76,7 +76,7 @@ R2_CSV=$(IFS=,; echo "${R2_FULL[*]}")
 echo "  - Processing sample: ${SAMPLE_ID}"
 echo "  - Task ID: ${SLURM_ARRAY_TASK_ID}"
 
-# STAR align command
+# STAR align command - updated parameters
 STAR --runThreadN ${SLURM_CPUS_PER_TASK} \
      --genomeDir ${STAR_INDEX_DIR} \
      --outFileNamePrefix ${OUTPUT_DIR}${SAMPLE_ID}. \
@@ -87,17 +87,19 @@ STAR --runThreadN ${SLURM_CPUS_PER_TASK} \
      --outBAMcompression 9 \
      --readFilesIn "${R1_CSV}" "${R2_CSV}" \
      --outSAMunmapped Within \
-     --outFilterMultimapNmax 1 \
-     --outFilterMismatchNmax 3 \
+     --outFilterMultimapNmax 50 \
+     --peOverlapNbasesMin 10 \
+     --alignSplicedMateMapLminOverLmate 0.5 \
+     --alignSJstitchMismatchNmax 5 -1 5 5 \
      --chimSegmentMin 10 \
-     --chimOutType WithinBAM SoftClip \
+     --chimOutType WithinBAM HardClip \
      --chimJunctionOverhangMin 10 \
-     --chimScoreMin 1 \
      --chimScoreDropMax 30 \
      --chimScoreJunctionNonGTAG 0 \
      --chimScoreSeparation 1 \
-     --alignSJstitchMismatchNmax 5 -1 5 5 \
-     --chimSegmentReadGapMax 3
+     --chimSegmentReadGapMax 3 \
+     --chimMultimapNmax 50
+
 
 # Post alignment clean up
 echo -ne "Performing post-alignment clean-up for ${SAMPLE_ID}\n"
