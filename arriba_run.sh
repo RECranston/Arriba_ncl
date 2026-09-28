@@ -6,7 +6,7 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --job-name=arriba_run
 #SBATCH --output=logs/arriba_%A_%a.out
-#SBATCH --array=46,62,64,66,67,72,75,77,88,94,107,163,171,173,180,182,192,196,240%20
+#SBATCH --array=1-100%50
 
 echo -en "\nA script for running Arriba RNA-Seq fusion detection\n\n"
 echo -en "Ruth Cranston 2026\n"
