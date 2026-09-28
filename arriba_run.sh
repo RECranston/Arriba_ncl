@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --account=rockhpc_sccrukomics
+#SBATCH --account=XXXX
 #SBATCH --partition=default_free
 #SBATCH --mem=100G
 #SBATCH --time=24:00:00
