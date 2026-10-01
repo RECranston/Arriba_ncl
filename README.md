@@ -13,7 +13,9 @@ The scripts include:
     * Post-analysis `.bam` files are sorted and indexed using samtools.
     * Fusions are plotted using the provided `draw_fusions.R` script with the locally installed libraries (installed during `arriba_prep.sh`).
     * `arriba_run.sh` is run as a slurm job array for parallel processing of multiple samples.
-
+* `tsv_conversion.R`
+   * Helper R script which will convert `.tsv` files into `.xlsx` files for easy manual review.
+  
 ### Setup
 
 * Create a new directory and move into it.
@@ -62,3 +64,4 @@ This can usually be defined by the number of rows in the sample sheet e.g. `cat 
 sbatch ./arriba_run.sh sample_sheet.txt trimmed_fastq/ arriba_output/
 ```
 * Resulting data is saved to the defined output directory including `.bam`, `.bam.bai`, `.pdf` reports from `draw_fusions.R`, and `.tsv` files containing detected fusions and discarded fusion calls.
+* Helper `tsv_conversion.R` script can be used to convert `.tsv` output files into `.xlsx` files for easy manual review. `tsv_conversion.R` requires editing to include file input and output paths.
