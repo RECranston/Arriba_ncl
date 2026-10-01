@@ -26,7 +26,7 @@ git clone https://github.com/RECranston/Arriba_ncl.git
 * Change into the cloned directory `cd Arriba_ncl`. Make the `arriba_prep.sh`, `arriba_run.sh` and `install_R_packages.R` scripts executable
 ```
 chmod 777 *.sh
-chmod 777 install_R_packages.R
+chmod 777 *.R
 ```
 * Edit the script header of `arriba_prep.sh` and `arriba_run.sh` to assign the correct account name to the sbatch run.
 * Run the setup script. 
