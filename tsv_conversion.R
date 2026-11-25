@@ -82,12 +82,16 @@ convert_tsvs <- function(pattern = "_fusions.discarded.tsv|_fusions.tsv",
                         "coverage2", "confidence",	"closest_genomic_breakpoint1",	"closest_genomic_breakpoint2",	"filters",
                         "fusion_transcript", "reading_frame",	"peptide_sequence",	"read_identifiers")
       
-    }
-    
+    } else if (ncol(test.dat) == 0) {
+      # if no data returned set colnames anyway & generate empty dataframe
+
+      # new arriba version headers (>version2)
+      my.col.names <- c("gene1",	"gene2",	"strand1(gene/fusion)",	"strand2(gene/fusion)",	"breakpoint1",	"breakpoint2",	"site1",	
+                        "site2", "type",	"split_reads1",	"split_reads2",	"discordant_mates",	"coverage1",	"coverage2", "confidence",
+                        "reading_frame",	"tags",	"retained_protein_domains",	"closest_genomic_breakpoint1", "closest_genomic_breakpoint2",
+                        "gene_id1",	"gene_id2",	"transcript_id1",	"transcript_id2",	"direction1",	"direction2", "filters",	
+                        "fusion_transcript",	"peptide_sequence",	"read_identifiers")
  
-    # define header names above so appropriate empty table size can be set
-    if (ncol(test.dat) == 0) {
-      
       # generates empty data frame
       test.dat <- t(data.frame(rep(NA, length(my.col.names))))
       test.dat <- as.data.frame(test.dat)
